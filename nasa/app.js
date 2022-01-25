@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 // MongoDB Connection 
 var mongoose = require('mongoose');
 const uri = "mongodb+srv://speak:speak@speak.8hewe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
