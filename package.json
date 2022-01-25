@@ -1,0 +1,22 @@
+{
+  "name": "speak_labelbox",
+  "version": "1.0.0",
+  "description": "Speak Labelbox Project",
+  "main": "nasa.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hthmkhlf/speak_labelbox.git"
+  },
+  "author": "Haithem K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hthmkhlf/speak_labelbox/issues"
+  },
+  "homepage": "https://github.com/hthmkhlf/speak_labelbox#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
