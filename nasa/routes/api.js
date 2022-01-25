@@ -4,7 +4,14 @@ var router = express.Router();
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 var User = require('../models/user')
 var Nasa = require('../models/nasa_image');
+var Rating = require('../models/apod_rating');
 const { response } = require('express');
+
+/*
+TODO: 
+1 - Implement the 'body-parser' for the post calls to parse the data and correctly add it to the database.
+2 - Implement test cases to see if each API endpoint is behaving correctly.
+*/
 
 /* GET Nasa Image and add it to database. */
 
@@ -53,6 +60,33 @@ router.delete('/user/:id', getUser, async(req, res) => {
         res.status(500).json({message: error.message})
     }
 })
+
+/*
+Create a rating for the user
+*/
+router.post('/rating', async(req,res) =>{
+    const rating = new Rating({
+        image_id: req.body.image_id,
+        user_id: req.body.user_id,
+        rating: req.body.rating
+    })
+
+    try {
+        // let dataRecieved = req.body.rating;
+        // console.log(dataRecieved);
+        // res.status(400).json({message: 'Rating need to be between 1 and 5'})
+        // if (res.body[rating] >= 1 && res.body[rating] <= 5){
+        const newRating = await rating.save()
+        res.status(201).json(newRating)
+        // } else {
+        //     res.status(400).json({message: 'Rating need to be between 1 and 5'})
+        // }
+
+    } catch (error) {
+        res.status(400).json({ message: error.message})
+    }
+})
+
 
 // User middleware
 async function getUser(req, res, next) {
